@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,17 +8,17 @@ public class Movement : MonoBehaviour
 {
     //Public declarations
     [Header("Movement")]
-    [Space]
     public bool canMove;
     public float moveSpeed;
     public bool xLock;
     public bool yLock;
     [Header("Jumping")]
-    [Space]
     public bool canJump;
     public float jumpPower;
     public Transform groundCheck;
     public LayerMask isGround;
+    [Header("Other")]
+    public bool doFlipping;
 
     //Private declarations
     bool facingRight = true;
@@ -55,7 +55,7 @@ public class Movement : MonoBehaviour
     }
 
     bool isGrounded() {
-        Collider2D[] check = Physics2D.OverlapCircleAll(groundCheck.position,0.05,isGround);
+        Collider2D[] check = Physics2D.OverlapCircleAll(groundCheck.position,0.05f,isGround);
         foreach (Collider2D v in check)
         {
             if (v != obj) {
@@ -67,5 +67,19 @@ public class Movement : MonoBehaviour
 
     void Move() {
         rb.velocity = dir*moveSpeed*Time.deltaTime;
+        if (!doFlipping) 
+            return;
+
+        if (dir.x == -1 && facingRight) {
+            Flip();
+        }
+        else if (dir.x == 1 && !facingRight) {
+            Flip();
+        }
+    }
+
+    void Flip() {
+        facingRight = !facingRight;
+        transform.localScale *= -1;
     }
 }
