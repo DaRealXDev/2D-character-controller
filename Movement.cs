@@ -35,16 +35,16 @@ public class Movement : MonoBehaviour
     }
     private void FixedUpdate() {
         if (!xLock && !yLock) {
-            x = Input.GetAxisRaw("Horizontal");
-            y = Input.GetAxisRaw("Vertical");
+            float x = Input.GetAxisRaw("Horizontal");
+            float y = Input.GetAxisRaw("Vertical");
             dir = new Vector2(x,y);
         }
         else if (!xLock && yLock) {
-            x = Input.GetAxisRaw("Horizontal");
+            float x = Input.GetAxisRaw("Horizontal");
             dir = new Vector2(x,0);
         }
         else if (!yLock && xLock) {
-            y = Input.GetAxisRaw("Vertical");
+            float y = Input.GetAxisRaw("Vertical");
             dir = new Vector2(0,y);
         }
         Move();
