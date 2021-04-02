@@ -47,10 +47,10 @@ public class Movement : MonoBehaviour
             y = Input.GetAxisRaw("Vertical");
             dir = new Vector2(0,y);
         }
-        Move()
+        Move();
 
         if (canJump && Input.GetKeyDown(KeyCode.Space) && isGrounded()) {
-            dir = new Vector2(dir.x,jumpPower)
+            dir = new Vector2(dir.x,jumpPower);
         }
     }
 
