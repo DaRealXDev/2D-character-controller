@@ -50,7 +50,7 @@ public class Movement : MonoBehaviour
         Move();
 
         if (canJump && Input.GetKeyDown(KeyCode.Space) && isGrounded()) {
-            rb.AddForce(new Vector2(jumpPower*Time.deltaTime));
+            rb.AddForce(new Vector2(0,jumpPower*Time.deltaTime));
         }
     }
 
