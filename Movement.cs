@@ -12,13 +12,12 @@ public class Movement : MonoBehaviour
     public float moveSpeed;
     public bool xLock;
     public bool yLock;
+    public bool doFlipping;
     [Header("Jumping")]
     public bool canJump;
     public float jumpPower;
     public Transform groundCheck;
     public LayerMask isGround;
-    [Header("Other")]
-    public bool doFlipping;
 
     //Private declarations
     bool facingRight = true;
