@@ -34,6 +34,7 @@ public class Movement : MonoBehaviour
         obj = this.gameObject;
     }
     private void FixedUpdate() {
+    if (canMove) {
         if (!xLock && !yLock) {
             float x = Input.GetAxisRaw("Horizontal");
             float y = Input.GetAxisRaw("Vertical");
@@ -48,6 +49,7 @@ public class Movement : MonoBehaviour
             dir = new Vector2(0,y);
         }
         Move();
+     }
 
         if (canJump && Input.GetKeyDown(KeyCode.Space) && isGrounded()) {
             rb.AddForce(new Vector2(0,jumpPower*Time.deltaTime));
